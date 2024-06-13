@@ -26,6 +26,7 @@ class Game:
         }
         
         self.player = PhysicsEntity(self,'player',(50,50),(8, 15))
+        
 
     def run(self):
         while True:
