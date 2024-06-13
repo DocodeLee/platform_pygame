@@ -7,12 +7,11 @@ from scripts.entities import PhysicsEntity
 class Game:
     def __init__(self):
         pygame.init()
+        
         # set the window title
         pygame.display.set_caption("Platform Runner")
-        
         ## the window size
         self.screen = pygame.display.set_mode((640, 480))
-        
         ## where i actually render
         self.display = pygame.Surface((320, 240))
         
@@ -31,10 +30,10 @@ class Game:
     def run(self):
         while True:
             #clearing the background is necessary
-            self.screen.fill((14,210,247))
+            self.display.fill((14,210,247))
             
             self.player.update((self.movement[1] - self.movement[0],0))
-            self.player.render_player(self.screen)
+            self.player.render_player(self.display)
             
             ##In SDL user has to handle the input, if you didn't pygame doesnt respond
             for event in pygame.event.get():
@@ -53,7 +52,7 @@ class Game:
                         self.movement[1] = False
                         
                         
-    
+            self.screen.blit(self.display,(0, 0))
             #update the display, at the screen var we set the display and update by this
             pygame.display.update()
             self.clock.tick(60) #60fps
