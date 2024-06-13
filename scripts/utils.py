@@ -1,3 +1,4 @@
+import os
 import pygame
 
 BASE_IMAGE_PATH = 'data/images/'
@@ -9,3 +10,9 @@ def load_image(path):
     
     #if you don't do return the result will be none
     return img
+
+def load_images(path):
+    images = []
+    for img_name in os.listdir(BASE_IMAGE_PATH + path):
+        images.append(load_image(path + '/' + img_name))
+    return images

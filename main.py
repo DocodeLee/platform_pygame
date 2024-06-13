@@ -1,7 +1,7 @@
 import sys
 import pygame
 
-from scripts.utils import load_image
+from scripts.utils import load_image, load_images
 from scripts.entities import PhysicsEntity
 
 class Game:
@@ -21,6 +21,7 @@ class Game:
         self.movement = [False, False]
         
         self.assets ={
+            "decor" : load_images('tiles/decor'),
             "player" : load_image('entities/player.png')
         }
         
@@ -51,8 +52,8 @@ class Game:
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
                         
-                        
-            self.screen.blit(self.display,(0, 0))
+            #showing the screen(transform the scale to the screen size)
+            self.screen.blit(pygame.transform.scale(self.display, self.screen.get_size()),(0, 0))
             #update the display, at the screen var we set the display and update by this
             pygame.display.update()
             self.clock.tick(60) #60fps
